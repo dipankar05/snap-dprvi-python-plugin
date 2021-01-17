@@ -1,0 +1,78 @@
+<!-- This XML file describes the interface of the python operator. It defines the required source product(s) and the parameters
+     for the processing. By using the information of this file the graphical user interface is automatically generated and also
+     the help on the command line is derived from the information provided here.
+-->
+<operator>
+    <!-- The name uniquely identifies the operator within SNAP -->
+    <name>org.esa.snap.python.DprviOp</name>
+    <!-- The alias is a more user-friendly name, e.g. to be used on the command line -->
+    <alias>py_dprvi_op</alias>
+    <!-- The operatorClass must always be org.esa.snap.gpf.python.PyOperator -->
+    <operatorClass>org.esa.snap.python.gpf.PyOperator</operatorClass>
+
+    <version>1.0</version>
+    <authors>Dipankar Mandal</authors>
+    <copyright>(C) 2020 Microwave Remote Sensing Lab, Indian Institute of Technology Bombay, India</copyright>
+
+    <description>
+        This is an beta Python processor for the DpRVI.
+    </description>
+
+    <namedSourceProducts>
+        <!-- One or more source products can be specified.
+             In the GUI only one is currently supported. On the command line multiple source products
+             can be specified by referencing them with the here defined names.
+         -->
+        <sourceProduct>
+            <name>source</name>
+        </sourceProduct>
+    </namedSourceProducts>
+
+    <parameters>
+        <parameter>
+            <!-- The name of the parameter; use context.getParameter('lowerFactor') in your Python code to retrieve the value -->
+            <name>Windowsize</name>
+            <!-- The description is shown in the help on the command line and also as tooltip in the GUI -->
+            <description>Window size for operation.</description>
+            <!-- The type of the parameter; can be boolean, byte, short, int, long, float, double, java.lang.String -->
+            <dataType>double</dataType>
+            <!-- The default value of the parameter; this is used if no value is specified by the user -->
+            <defaultValue>1.0</defaultValue>
+        </parameter>
+		<parameter>
+            <name>SourceC11</name>
+            <description>The name of the matrix element C11 or C11.bin.</description>
+            <label>Source C11</label>
+            <dataType>java.lang.String</dataType>
+            <defaultValue>C11</defaultValue>
+            <!-- An empty parameter is not allowed -->
+            <notEmpty>true</notEmpty>
+        </parameter>
+        <parameter>
+            <name>SourceC12real</name>
+            <description>The name of the matrix element C11 or C11.bin.</description>
+            <label>Source C12 real</label>
+            <dataType>java.lang.String</dataType>
+            <defaultValue>C12_real</defaultValue>
+            <notEmpty>true</notEmpty>
+        </parameter>
+		<parameter>
+            <name>SourceC12imag</name>
+            <description>The name of the matrix element C11 or C11.bin</description>
+            <label>Source C12 imag</label>
+            <dataType>java.lang.String</dataType>
+            <defaultValue>C12_imag</defaultValue>
+            <!-- An empty parameter is not allowed -->
+            <notEmpty>true</notEmpty>
+        </parameter>
+		<parameter>
+            <name>SourceC22</name>
+            <description>The name of the matrix element C11 or C11.bin</description>
+            <label>Source C22</label>
+            <dataType>java.lang.String</dataType>
+            <defaultValue>C22</defaultValue>
+            <notEmpty>true</notEmpty>
+        </parameter>
+    </parameters>
+
+</operator>
