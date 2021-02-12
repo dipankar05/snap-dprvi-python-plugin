@@ -23,6 +23,7 @@ SNAP Step Forum: https://senbox.atlassian.net/wiki/spaces/SNAP/pages/50855941/Co
 Download the nbm file under target>snap-dprvi-1.0.0.nbm in SNAP. You may follow the instructiion given in the InstallationPPT.pdf file.
 
 
-Reference:
-
+<hr>
+<b>Reference:</b>
+<hr>
 Mandal, D., Kumar, V., Ratha, D., Dey, S., Bhattacharya, A., Lopez-Sanchez, J.M., McNairn, H. and Rao, Y.S., 2020. Dual polarimetric radar vegetation index for crop growth monitoring using sentinel-1 SAR data. Remote Sensing of Environment, 247, p.111954.
