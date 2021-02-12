@@ -1,4 +1,4 @@
-# snap-dprvi-plugin
+# snap-dprvi-python-plugin
  DpRVI for Sentinel-1 SAR data
 Python plugin for DpRVI in SNAP.
 
