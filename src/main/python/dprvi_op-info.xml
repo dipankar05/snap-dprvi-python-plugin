@@ -12,7 +12,7 @@
 
     <version>1.0</version>
     <authors>Dr. Dipankar Mandal et al.</authors>
-    <copyright>(C) 2020 Microwave Remote Sensing Lab, Indian Institute of Technology Bombay, India</copyright>
+    <copyright>(C) 2021 Microwave Remote Sensing Lab, Indian Institute of Technology Bombay, India</copyright>
 
     <description>
         This is a Python processor for the Dual-pol Radar Vegetation Index (DpRVI) Read about algorithm: https://doi.org/10.1016/j.rse.2020.111954.

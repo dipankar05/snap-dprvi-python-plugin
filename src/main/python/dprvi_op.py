@@ -1,11 +1,17 @@
 ###################################################################################################
-# This operator class implementation serves as a template for writing SNAP operators in Python.
-# It is shown how thw source products and it's data is accessed, how the values
-# of the parameters, specified in the accompanying ndvi_op-info.xml file, are retrieved and
-# validated. Also how the resulting target product can be defined along with flags, masks, etc. is
-# shown in this example. A guide about the development of a python operator can be found at
-# http://senbox.atlassian.net/wiki/display/SNAP/How+to+write+a+processor+in+Python
-# For further questions please consult the forum at http://forum.step.esa.int
+# Copyright (C) 2021 by Microwave Remote Sensing Lab, IITBombay http://www.mrslab.in
+# 
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 3 of the License, or (at your option)
+# any later version.
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+# more details.
+# 
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, see http://www.gnu.org/licenses/
 ###################################################################################################
 
 import dprvi_algo
