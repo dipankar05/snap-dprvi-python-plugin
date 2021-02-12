@@ -20,9 +20,9 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.acme.snap.examples</groupId>
-    <artifactId>snap-engine-python-operator-dprvi</artifactId>
-    <version>9.0.0</version>
+    <groupId>org.esa.snap</groupId>
+    <artifactId>snap-dprvi</artifactId>
+    <version>1.0.0</version>
     <packaging>nbm</packaging>    
     <name>SNAP DpRVI Python Operator</name>
     <description>A basic Python operator module for DpRVI from dual-pol C2 matrix</description>
@@ -77,7 +77,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <licenseName>THE BEER-WARE LICENSE</licenseName>
+                    <licenseName>GNU GENERAL PUBLIC LICENSE V3.0</licenseName>
                     <licenseFile>LICENSE.txt</licenseFile>
                     <requiresRestart>true</requiresRestart>
                 </configuration>

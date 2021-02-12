@@ -16,6 +16,7 @@ import snappy
 
 #NDVI_HIGH_THRESHOLD = 0.7
 DPRVI_LOW_THRESHOLD = 0.3
+DPRVI_LOWER_FACTOR = 3
 
 # If a Java type is needed which is not imported by snappy by default it can be retrieved manually.
 # First import jpy
@@ -35,8 +36,18 @@ class DprviOp:
         self.dprvi_band = None
         #self.ndvi_flags_band = None
         self.algo = None
-        self.lower_factor = 0.0
+        self.lower_factor = 3
         #self.upper_factor = 0.0
+        
+    def conv2d(self, a, f):
+        filt = np.zeros(a.shape)
+        wspad = int(f.shape[0]/2)
+        s = f.shape + tuple(np.subtract(a.shape, f.shape) + 1)
+        strd = np.lib.stride_tricks.as_strided
+        subM = strd(a, shape = s, strides = a.strides * 2)
+        filt_data = np.einsum('i,ik->k', f, subM)
+        filt[wspad:wspad+filt_data.shape[0]] = filt_data
+        return filt
 
     def initialize(self, context):
         # Via the context object the source product which shall be processed can be retrieved
@@ -64,7 +75,7 @@ class DprviOp:
 
         # As it is always a good idea to separate responsibilities the algorithmic methods are put
         # into an other class
-        self.algo = dprvi_algo.DprviAlgo(DPRVI_LOW_THRESHOLD)
+        self.algo = dprvi_algo.DprviAlgo(DPRVI_LOW_THRESHOLD,DPRVI_LOWER_FACTOR)
 
         # Create the target product
         dprvi_product = snappy.Product('py_DPRVI', 'py_DPRVI', width, height)
@@ -73,6 +84,7 @@ class DprviOp:
         # That's why mainly copy methods exist like copyBand(...), copyGeoCoding(...), copyMetadata(...)
         snappy.ProductUtils.copyGeoCoding(source_product, dprvi_product)
         snappy.ProductUtils.copyMetadata(source_product, dprvi_product)
+        snappy.ProductUtils.copyTiePointGrids(source_product, dprvi_product)
         # For copying the time information no helper method exists yet, but will come in SNAP 5.0
         dprvi_product.setStartTime(source_product.getStartTime())
         dprvi_product.setEndTime(source_product.getEndTime())
@@ -124,12 +136,27 @@ class DprviOp:
         lower1_samples = lower1_tile.getSamplesFloat()
         upper1_samples = upper1_tile.getSamplesFloat()
         # Values at specific pixel locations can be retrieved for example by lower_tile.getSampleFloat(x, y)
+        
+        # Filter kernel build
+        #kernel = np.ones((self.lower_factor,1),np.float32)/(self.lower_factor*1)
+        #kernel = numpy.array([1/self.lower_factor,1/self.lower_factor,1/self.lower_factor], dtype=numpy.float32) 
+        
+        ls = [1/self.lower_factor]*self.lower_factor
+        kernel = np.array(ls,dtype=numpy.float32)
+
 
         # Convert the data into numpy data. It is easier and faster to work with as if you use plain python arithmetic
-        lower_data = numpy.array(lower_samples, dtype=numpy.float32) * self.lower_factor
-        upper_data = numpy.array(upper_samples, dtype=numpy.float32) * self.lower_factor
-        lower1_data = numpy.array(lower1_samples, dtype=numpy.float32) * self.lower_factor
-        upper1_data = numpy.array(upper1_samples, dtype=numpy.float32) * self.lower_factor
+        #lower_data = numpy.array(lower_samples, dtype=numpy.float32) * self.lower_factor
+        lower_data1 = numpy.array(lower_samples, dtype=numpy.float32) 
+        upper_data1 = numpy.array(upper_samples, dtype=numpy.float32) 
+        lower1_data1 = numpy.array(lower1_samples, dtype=numpy.float32) 
+        upper1_data1 = numpy.array(upper1_samples, dtype=numpy.float32) 
+        
+        ## Apply convolution averaging ops
+        lower_data = self.conv2d(lower_data1,kernel)
+        upper_data = self.conv2d(upper_data1,kernel)
+        lower1_data = self.conv2d(lower1_data1,kernel)
+        upper1_data = self.conv2d(upper1_data1,kernel)
 
         # Doing the actual computation
         dprvi = self.algo.compute_dprvi(lower_data, upper_data, lower1_data, upper1_data)

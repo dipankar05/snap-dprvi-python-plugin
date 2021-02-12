@@ -8,7 +8,7 @@
                 <attr name="delegate" methodvalue="org.esa.snap.core.gpf.ui.DefaultOperatorAction.create"/>
                 <attr name="operatorName" stringvalue="py_dprvi_op"/>
                 <attr name="displayName" stringvalue="DpRVI Python Processor"/>
-                <attr name="dialogTitle" stringvalue="DpRVI Python Processor (beta)"/>
+                <attr name="dialogTitle" stringvalue="DpRVI Python Processor"/>
                 <attr name="helpId" stringvalue="pyDprviDoc"/>  <!--The helpId if help contents is provided-->
                 <attr name="targetProductNameSuffix" stringvalue="_dprvi"/>
                 <attr name="ShortDescription" stringvalue="Generates DpRVI from a source product."/>
@@ -18,7 +18,7 @@
 
     <folder name="Menu">
         <folder name="Radar">
-            <folder name="MRSLabTools">
+            <folder name="MRSLab-SARTools">
                 <file name="PyDprviOpAction.shadow">
                     <attr name="originalFile" stringvalue="Actions/Operators/PyDprviOpAction.instance"/>
                     <attr name="position" intvalue="0"/>

@@ -11,11 +11,11 @@
     <operatorClass>org.esa.snap.python.gpf.PyOperator</operatorClass>
 
     <version>1.0</version>
-    <authors>Dipankar Mandal</authors>
+    <authors>Dr. Dipankar Mandal et al.</authors>
     <copyright>(C) 2020 Microwave Remote Sensing Lab, Indian Institute of Technology Bombay, India</copyright>
 
     <description>
-        This is an beta Python processor for the DpRVI.
+        This is a Python processor for the Dual-pol Radar Vegetation Index (DpRVI) Read about algorithm: https://doi.org/10.1016/j.rse.2020.111954.
     </description>
 
     <namedSourceProducts>
@@ -35,9 +35,9 @@
             <!-- The description is shown in the help on the command line and also as tooltip in the GUI -->
             <description>Window size for operation.</description>
             <!-- The type of the parameter; can be boolean, byte, short, int, long, float, double, java.lang.String -->
-            <dataType>double</dataType>
+            <dataType>int</dataType>
             <!-- The default value of the parameter; this is used if no value is specified by the user -->
-            <defaultValue>1.0</defaultValue>
+            <defaultValue>3</defaultValue>
         </parameter>
 		<parameter>
             <name>SourceC11</name>
@@ -50,7 +50,7 @@
         </parameter>
         <parameter>
             <name>SourceC12real</name>
-            <description>The name of the matrix element C11 or C11.bin.</description>
+            <description>The name of the matrix element C12_real or C12_real.bin.</description>
             <label>Source C12 real</label>
             <dataType>java.lang.String</dataType>
             <defaultValue>C12_real</defaultValue>
@@ -58,7 +58,7 @@
         </parameter>
 		<parameter>
             <name>SourceC12imag</name>
-            <description>The name of the matrix element C11 or C11.bin</description>
+            <description>The name of the matrix element C12_imag or C12_imag.bin</description>
             <label>Source C12 imag</label>
             <dataType>java.lang.String</dataType>
             <defaultValue>C12_imag</defaultValue>
@@ -67,7 +67,7 @@
         </parameter>
 		<parameter>
             <name>SourceC22</name>
-            <description>The name of the matrix element C11 or C11.bin</description>
+            <description>The name of the matrix element C22 or C22.bin</description>
             <label>Source C22</label>
             <dataType>java.lang.String</dataType>
             <defaultValue>C22</defaultValue>

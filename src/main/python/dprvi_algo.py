@@ -4,8 +4,9 @@ import numpy as np
 
 class DprviAlgo:
 
-    def __init__(self, low_threshold):
+    def __init__(self, low_threshold, lower_factor):
         self.low_threshold = low_threshold
+        self.lower_factor = lower_factor
         #self.high_threshold = high_threshold
 
     def compute_dprvi(self, lower_data, upper_data, lower1_data, upper1_data):
