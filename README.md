@@ -1,8 +1,9 @@
 # snap-dprvi-python-plugin
- DpRVI for Sentinel-1 SAR data
+Dual-pol Radar Vegetation Index (DpRVI)
+<hr>
 Python plugin for DpRVI in SNAP.
 
-Input: Dual-pol Covariance matrix C2.
+Input: Dual-pol Covariance matrix C2. For example, it can be generated for Sentinel-1 SLC data products.
 
 Output: DpRVI image
 
