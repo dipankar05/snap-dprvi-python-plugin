@@ -21,7 +21,7 @@ SNAP Step Forum: https://senbox.atlassian.net/wiki/spaces/SNAP/pages/50855941/Co
 <hr>
 <b>Installation guide</b>
 <hr>
-Download the nbm file under src/main>snap-dprvi-1.0.0.nbm in SNAP. You may follow the instructiion given in the InstallationPPT.pdf file.
+Download the nbm file under src/main>snap-dprvi-1.0.0.nbm in local PC. Then you may install this plugin in SNAP vis plugin manager. You may follow the instructiion given in the InstallationPPT.pdf file.
 
 
 <hr>
